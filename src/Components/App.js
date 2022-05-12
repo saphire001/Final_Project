@@ -37,14 +37,14 @@ class App extends React.Component {
 
 
     getData() {
-        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
+        axios.get('https://my-json-server.typicode.com/ntaparia/Final_Project/accounts')
             .then(response => {
                 this.props.setAccounts(response.data);
             }).catch(error => {
             this.props.tasksError();
         });
 
-        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
+        axios.get('https://my-json-server.typicode.com/ntaparia/Final_Project/transactions')
             .then(response => {
                 this.props.setTransactions(response.data);
             }).catch(error => {

@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
 import axios from 'axios';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+
 import VariablePage from "./VariablePage";
+import PageTabs from './PageTabs'; 
 import { setAccounts } from "../actions";
 
 class App extends React.Component {
@@ -33,3 +35,4 @@ class App extends React.Component {
     }
 }
 
+export default App; 

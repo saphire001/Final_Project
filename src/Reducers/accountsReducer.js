@@ -31,34 +31,27 @@ const accountsReducer = (state = DEFAULT_STATE , action) =>{
     //if there is an action done by user and information being received
     if(action && action.payload){accountId = state.findIndex(account => account.id === action.payload.accountid);}
 
+
     if(action.type === "DEPOSIT_CASH") {
         depAmount = action.payload.amount;
-        //accountId = state.findIndex(account => account.id === action.payload);
-        accBalance = updateState[accountId].amount;
-        return ( updateState[accountId].balance = parseInt(accBalance + depAmount) )
+        accountId = action.payload.accountid;
+        accBalance = action.payload.balance ;
 
-        /*****
-         depAmount = action.payload.amount;
-         accountId = action.payload.accountid;
-         accBalance = action.payload.balance;
-         return ( updateState[accountId].balance = parseInt(accBalance + depAmount) )
-         *****/
-
+        const accountIndex = updateState.findIndex(acc => acc._id === accountId);
+        updateState[accountIndex].balance += parseInt(depAmount);
+        return updateState;
     }
 
     else if(action.type === "WITHDRAW_CASH") {
         witAmount = action.payload.amount;
-        accountId = state.findIndex(account => account.id === action.payload);
-        //accountId = action.payload.accountid;
+        accountId = action.payload.accountid;
         accBalance = action.payload.balance;
-        return ( updateState[accountId].balance = parseInt(accBalance - witAmount ) )
-        /*****
-         witAmount = action.payload.amount;
-         accountId = action.payload.accountid;
-         accBalance = action.payload.balance;
-         return ( updateState[accountId].balance = parseInt(accBalance - witAmount ) )
-         ****/
+
+        const accountIndex = updateState.findIndex( acc => acc._id === accountId);
+        updateState[accountIndex].balance -= parseInt(witAmount);
+        return updateState;
     }
+
 
     else if(action.type === "ADD_ACCOUNT"){
         return [
@@ -75,4 +68,12 @@ const accountsReducer = (state = DEFAULT_STATE , action) =>{
 
     else if(action.type === "DELETE_ACCOUNT"){
         updateState.splice(accountId, 1);
-        return updateState};
+        return updateState;
+    }
+
+    else
+        return state
+
+};
+
+export default accountsReducer;

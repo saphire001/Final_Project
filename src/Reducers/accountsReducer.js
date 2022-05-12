@@ -75,4 +75,4 @@ const accountsReducer = (state = DEFAULT_STATE , action) =>{
 
     else if(action.type === "DELETE_ACCOUNT"){
         updateState.splice(accountId, 1);
-        return updateState;}
+        return updateState};

@@ -1,0 +1,8 @@
+.page-tabs .nav-link {
+    cursor: pointer;
+    color: mediumpurple;
+}
+
+.page-tabs .nav-link.active {
+    color: darkblue;
+}

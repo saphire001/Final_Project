@@ -1,38 +1,82 @@
-import axios from 'axios';
 import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-
+import PageTabs from './PageTabs';
 import VariablePage from "./VariablePage";
-import PageTabs from './PageTabs'; 
-import { setAccounts } from "../actions";
+import { setAccounts, setTransactions, tasksError} from "../actions";
+import Page1 from './Page1';
+import Page2 from './Page2';
+import Page3 from './Page3';
+import AccountsList from './AccountsList';
+import AddAccount from './AddAccount';
+import TransactFormatPage from './TransactFormatPage';
+import TransactList from './TransactList';
+import AccountAdded from './AccountAdded';
 
-class App extends React.Component {
-    componentDidMount() {
-        this.getData();
+class App extends React.Component {            
+                                                
+    state = {
+        view: {AccountsList},
+        allAccounts: [],
+        sortedTransactions: {
+            name: [],
+            amounts: []
+        },
+        sortedAccounts: {
+            name: [],
+            balance: []
+        },
+        errorText: ''
     }
-    getData(){
+
+    componentDidMount() {
+        this.getData();                         
+    }
+
+
+    getData() {
         axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
             .then(response => {
                 this.props.setAccounts(response.data);
             }).catch(error => {
-                this.props.tasksError();
+            this.props.tasksError();
+        });
+
+        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
+            .then(response => {
+                this.props.setTransactions(response.data);
+            }).catch(error => {
+            this.props.tasksError();
         });
     }
+
     render(){
-        const { view } = this.state;
-        switch (view) {
-            case 'accounts':
-                return (this.wrapPage(<Page1 />));
-            case 'transactions':
-                return (this.wrapPage(<Page2 />));
-            case 'newaccount':
-                return (this.wrapPage(<Page3/>));
-            default:
-                return (this.wrapPage(<h2>Please make a valid selection</h2>));
-        }
+        const {view} = this.state;
+
+        return (
+            <div>
+                <BrowserRouter>
+                    <PageTabs/>
+                    <div>
+
+                        <Route path="/" exact component={AccountsList}/>
+                        <Route path="/page2" component={TransactList}/>
+                        <Route path="/page3" component={AccountAdded}/>
+                        <Route path="/page/:id" component={VariablePage}/>
+                    </div>
+                </BrowserRouter>
+            </div>
+        )
     }
 }
 
-export default App; 
+const mapStateToProps = (state) => {                    
+    return {
+        errorMessage: state.errors.getAccounts
+    };
+}
+
+
+export default connect(mapStateToProps, {setAccounts, setTransactions, tasksError})(App);

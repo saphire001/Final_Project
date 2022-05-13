@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://ntaparia.github.io/Final_Project"
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -12,10 +12,9 @@ class factionCard extends React.Component {
         event.preventDefault();
 
         if(event === depositCash){ this.props.depositCash(this.state.moneyAmount); }
-        //min 38 in lecture video change
         if(event === withdrawCash){ this.props.withdrawCash(this.state.moneyAmount); }
 
-        this.setState({ moneyAmount: '' , balance:''});    //clear out of
+        this.setState({ moneyAmount: '' , balance:''});    
     }
 
 

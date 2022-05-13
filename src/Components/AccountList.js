@@ -5,7 +5,7 @@ import { removeAccount, withdrawCash, depositCash } from "../actions";
 
 import FactionCard from "./FactionCard";
 
-class AccountList extends React.Component {
+class accountsList extends React.Component {
 
     removeAccount = (accountName) => {
         this.props.removeAccount(accountName.id);           
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => {
         accounts: state.accounts
     }
 }
-export default connect(mapStateToProps, {depositCash, withdrawCash, removeAccount })(AccountList);
+export default connect(mapStateToProps, {depositCash, withdrawCash, removeAccount })(accountsList);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { addAccount, addStartingBalance } from "../actions";
 
-class AccountAdded extends React.Component{
+class AddAccount extends React.Component{
     state = { newAc: '', newBalance: ''}
 
     onFormSubmit = (event) => {
@@ -32,4 +32,4 @@ class AccountAdded extends React.Component{
     }
 }
 
-export default connect(null, {addAccount, addStartingBalance})(AccountAdded);
+export default connect(null, {addAccount, addStartingBalance})(AddAccount);

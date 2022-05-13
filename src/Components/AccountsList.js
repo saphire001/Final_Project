@@ -1,4 +1,4 @@
-iimport React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import { removeAccount, withdrawCash, depositCash } from "../actions";

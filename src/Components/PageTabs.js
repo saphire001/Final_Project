@@ -16,7 +16,7 @@ class PageTabs extends React.Component {
     return (
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">
-          Westeros Financial Services
+        Westorsi Bank
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,13 +28,13 @@ class PageTabs extends React.Component {
           <ul class="navbar-nav mr-auto" style={{ textAlign: 'center' }}>
             <li class="nav-item">
               <Link className={this.isActiveTab('/')} to="/" onClick={event => this.onTabClick(event, '/')}>
-                Account List
+                List of Accounts 
                 </Link>
             </li>
 
             <li class="nav-item">
               <Link className={this.isActiveTab('/page2')} to="/page2" onClick={event => this.onTabClick(event, '/page2')}>
-                Transaction List
+                List of Transactions
                 </Link>
             </li>
           </ul>

@@ -107,7 +107,7 @@ class VariablePage extends React.Component {
 
     return (
       <div id='transaction' className="page-variable" style={{ textAlign: 'center' }}>
-        <h2>Account ID: {this.props.match.params.id}</h2>
+        <h2> ID of Account: {this.props.match.params.id}</h2>
         <hr></hr>
         <h4>Name: {this.state.account.name}</h4>
         <h4>Balance: ${this.state.account.balance}</h4>

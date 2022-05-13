@@ -9,7 +9,7 @@ const Transactions = props => {
               </h5>
 
               <p class="card-test">
-                  Account ID: {props.transaction.accountId}
+                   ID of Account: {props.transaction.accountId}
               </p>
 
               <p class="card-text">

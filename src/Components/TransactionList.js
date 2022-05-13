@@ -12,7 +12,7 @@ class TransactionList extends React.Component {
     return (
 		<div>
 			<div>
-				<h2 style={{ textAlign: "center"}}>Transaction History</h2>
+				<h2 style={{ textAlign: "center"}}> History of Transaction</h2>
 			</div>
 			
 			<div class="container" style={{display:"flex"}}>

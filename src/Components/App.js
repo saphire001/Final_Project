@@ -5,7 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import PageTabs from './PageTabs';
 import VariablePage from "./VariablePage";
-import { setAccounts, setTransactions, tasksError} from "../actions";
+import { setAccounts, setTransactions} from "../actions";
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {setAccounts, setTransactions, tasksError})(App);
+export default connect(mapStateToProps, {setAccounts, setTransactions})(App);

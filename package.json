@@ -1,16 +1,10 @@
 
- scripts:{
-  +   "predeploy": "npm run build",
-  +   "deploy": "gh-pages -d build",
-      "start": "react-scripts start",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject"
-  },
+ 
   {
     "name": "banking",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://ntaparia.github.io/Final_Project",
     "dependencies": {
       "@testing-library/jest-dom": "^5.16.4",
       "@testing-library/react": "^13.2.0",
@@ -24,7 +18,14 @@
       "redux": "^4.2.0",
       "web-vitals": "^2.1.4"
     },
-    "homepage": "https://ntaparia.github.io/Final_Project",
+    scripts:{
+      +   "predeploy": "npm run build",
+      +   "deploy": "gh-pages -d build",
+          "start": "react-scripts start",
+          "build": "react-scripts build",
+          "test": "react-scripts test",
+          "eject": "react-scripts eject"
+      },
     "eslintConfig": {
       "extends": [
         "react-app",

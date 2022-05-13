@@ -1,33 +1,35 @@
-import React from 'react';
+iimport React from 'react';
 import { connect } from 'react-redux';
-import Accounts from './Accounts';
+
+import { removeAccount, withdrawCash, depositCash } from "../actions";
+
+import FactionCard from "./FactionCard";
+
+class accountsList extends React.Component {
+
+    removeAccount = (accountName) => {
+        this.props.removeAccount(accountName.id);           //changed _id -> id
+    }
 
 
-class AccountList extends React.Component {
-
-  render() {
-    const accountList = this.props.accounts.map(account => {
-      return <Accounts account={account} />
-    });
-
-    return (
-        <div>
-			<div>
-				<h2 style={{ textAlign: "center" }}>Account Dashboard</h2>
-			</div>
-			
-			<div class="container" style={{display:"flex"}}>
-          {accountList}
-			</div>
-		</div>
-    )
-  }
+    render(){
+        const userAccounts = this.props.accounts.map(accountName => {
+            return <FactionCard
+                account={accountName}
+                key={accountName.id}
+                removeAccount={this.removeAccount}/>
+        });
+        return(
+            <ul className = "task-list list-group">
+                { userAccounts }
+            </ul>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    accounts: state.accounts
-  };
+    return {
+        accounts: state.accounts
+    }
 }
-
-export default connect(mapStateToProps)(AccountList);
+export default connect(mapStateToProps, {depositCash, withdrawCash, removeAccount })(accountsList);

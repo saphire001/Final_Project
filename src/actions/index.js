@@ -1,68 +1,79 @@
-export const setAccounts = accounts => {
+export const setAccounts = (accountid, name, balance) => {
     return {
-      type: 'SET_ACCOUNTS',
-      payload: accounts
+        type: 'SET_ACCOUNTS',
+        payload: {
+            accountid, name, balance
+        }
     }
-  };
-  
-  export const setTransactions = transactions => {
+}
+
+export const setTransactions = (transactIndex, accountid, type, amount, description) => {
     return {
-      type: 'SET_TRANSACTIONS',
-      payload: transactions
+        type: 'SET_TRANSACTIONS',
+        payload: {
+            transactIndex, accountid, type, amount, description
+        }
     }
-  };
-  
-  export const deleteAccount = accountId => {
+}
+
+export const addAccount = (accountid, name, balance) => {
     return {
-      type: 'DELETE_ACCOUNT',
-      payload: accountId
+        type: 'ADD_ACCOUNT',
+        payload: {
+            accountid, name, balance
+        }
     }
-  };
-  
-  
-  export const deposit = (amount, accountId) => {
+}
+
+export const addStartingBalance = (accountid, amount) => {
+    return{
+        type: 'START_BALANCE',
+        payload: {accountid, amount}
+    }
+}
+
+export const removeAccount = (accountid) => {
     return {
-      type: 'DEPOSIT',
-      payload: {
-        amount,
-        accountId
-      }
+        type: 'DELETE_ACCOUNT',
+        payload: accountid
     }
-  };
-  
-  export const withdraw = (amount, accountId) => {
+}
+
+export const depositCash = (accountid, amount) => {
     return {
-      type: 'WITHDRAW',
-      payload: {
-        amount,
-        accountId
-      }
+        type: 'DEPOSIT_CASH',
+        payload: {
+            accountid, amount
+        }
     }
-  };
-  
-  export const depositTransaction = (transactionId, accountId, amount) => {
+}
+
+export const withdrawCash = (accountid, amount) => {
     return {
-      type: 'DEPOSIT_TRANSACTION',
-      payload: {
-        transactionId,
-        accountId,
-        type: "deposit",
-        amount,
-        name: "Money has been deposited"
-      }
+        type: 'WITHDRAW_CASH',
+        payload: {
+            accountid, amount
+        }
     }
-  };
-  
-  export const withdrawalTransaction = (transactionId, accountId, amount) => {
+}
+
+export const accountsError = error =>{
+    return{
+        type: 'ACCOUNT_ERROR'
+    }
+}
+
+export const transactsError = error =>{
+    return{
+        type: 'TRANSACTS_ERROR'
+    }
+}
+
+
+
+export const tasksError = (errorMessage) => {
     return {
-      type: 'WITHDRAWAL_TRANSACTION',
-      payload: {
-        transactionId,
-        accountId,
-        type: "withdraw",
-        amount,
-        name: "Money has been withdrawn"
-      }
+        type: 'TASKS_ERROR'
     }
-  };
+};
   

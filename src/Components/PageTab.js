@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './PageTabs.css';
+import './PageTab.css';
 
 class PageTabs extends React.Component {
     state = { currentPage: '/' }

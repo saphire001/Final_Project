@@ -5,11 +5,11 @@ const Transactions = props => {
       <div class="card" style={{width:"400px;", position:"relative;", margin:"50px;"}}>
           <div class="card-body">
               <h5 class="card-title">
-                    Transaction ID: {props.transaction._id}
+                    ID of Transaction: {props.transaction._id}
               </h5>
 
               <p class="card-test">
-                  Account ID: {props.transaction.accountId}
+                   ID of Account: {props.transaction.accountId}
               </p>
 
               <p class="card-text">
@@ -17,7 +17,7 @@ const Transactions = props => {
               </p>
 
               <p class="card-text">
-                  Type: {props.transaction.type}
+                  Debit or Credit: {props.transaction.type}
               </p>
 
               <p class="card-text">

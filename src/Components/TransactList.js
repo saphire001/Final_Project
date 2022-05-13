@@ -1,20 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { removeAccount } from "../actions";
-
-import TransactFormatPage from "./TransactFormatPage";
+import Transactions from './Transactions';
 
 class TransactList extends React.Component {
 
     render(){
         const userTransacts = this.props.transacts.map(transaction  => {
-            return <TransactFormatPage transaction={transaction} key={transaction.id}/>
+            return <Transactions transaction={transaction}/>
         });
         return(
-            <ul className = "task-list list-group">
-                { userTransacts }
-            </ul>
+            <div>
+			<div>
+				<h2 style={{ textAlign: "center"}}>Transaction History</h2>
+			</div>
+			
+			<div class="container" style={{display:"flex"}}>
+				{transactionList}
+			</div>
+		</div>
         )
     }
 }

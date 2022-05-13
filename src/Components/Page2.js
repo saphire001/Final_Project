@@ -1,15 +1,11 @@
 import React from 'react';
-import TransactionList from './TransactionList';
-import Footer from './Footer';
-
 
 const Page2 = props => {
-  return (
-    <div className="page-two">
-      <TransactionList />
-      <Footer />
-    </div>
-  )
+    return (
+        <div className="page-two">
+            <h2>All Transactions</h2>
+        </div>
+    )
 }
 
 export default Page2;

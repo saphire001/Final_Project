@@ -1,18 +1,8 @@
 import { combineReducers } from 'redux';
-
-//import userChoiceReducer from './userChoiceReducer';
-import errorReducer from './errorReducer';
-//import accountsReducer from './accountsReducer';
 import accountsReducer from './accountsReducer';
+import transactionsReducer from './transactionsReducer';
 
-import transactsReducer from './transactsReducer';
-
-export default combineReducers( {
-
-    //tasks: userChoiceReducer,
-    //accounts: accountsReducer,
-    accounts: accountsReducer,
-    transacts: transactsReducer,
-    errors: errorReducer
-
+export default combineReducers({
+  accounts: accountsReducer,
+  transactions: transactionsReducer
 });

@@ -23,7 +23,7 @@ class Accounts extends React.Component {
                     Name: {this.props.account.name}
                 </h5>
                 <p class="card-text">
-                    Account ID: {this.props.account._id}
+                     ID for Accounts: {this.props.account._id}
                 </p>
                 <p class="card-text">
                     Balance: ${this.props.account.balance}

@@ -17,12 +17,18 @@ const DEFAULT_STATE = [
 
 
 const accountsReducer = (state = DEFAULT_STATE , action) =>{
-    let updateState = [...state];                       
+    let updateState = [...state];                        //reducer must return a new array/object
     let accountId;
     let accBalance;
     let depAmount;
     let witAmount;
 
+    //opening payload box contents
+    //if there is an action, extract account id associated with account
+    //if(action.payload.accountid){accountId = state.findIndex(account => account._id === action.payload.accountid);}
+
+
+    //if there is an action done by user and information being received
     if(action && action.payload){accountId = state.findIndex(account => account.id === action.payload.accountid);}
 
 
@@ -50,7 +56,7 @@ const accountsReducer = (state = DEFAULT_STATE , action) =>{
     else if(action.type === "ADD_ACCOUNT"){
         return [
             ...state,
-            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   
+            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   //balance: action.payload.balance
         ];
     }
 

@@ -17,7 +17,7 @@ const DEFAULT_STATE = [
 
 
 const accountsReducer = (state = DEFAULT_STATE , action) =>{
-    let updateState = [...state];     
+    let updateState = [...state];                       
     let accountId;
     let accBalance;
     let depAmount;
@@ -50,7 +50,7 @@ const accountsReducer = (state = DEFAULT_STATE , action) =>{
     else if(action.type === "ADD_ACCOUNT"){
         return [
             ...state,
-            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   //balance: action.payload.balance
+            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   
         ];
     }
 

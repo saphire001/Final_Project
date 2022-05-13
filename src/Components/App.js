@@ -3,42 +3,47 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import PageTabs from './PageTab';
+import PageTabs from './PageTabs';
 import VariablePage from "./VariablePage";
 import { setAccounts, setTransactions, tasksError} from "../actions";
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import AccountsList from './AccountList';
+import AccountsList from './AccountsList';
 import AddAccount from './AddAccount';
 import TransactFormatPage from './TransactFormatPage';
 import TransactList from './TransactList';
 
 class App extends React.Component {             
+                                                
     state = {
         view: {AccountsList},
         allAccounts: [],
         sortedTransactions: {
-        name: [],
-        amounts: []
+            name: [],
+            amounts: []
         },
         sortedAccounts: {
-        name: [],
-        balance: []
+            name: [],
+            balance: []
         },
         errorText: ''
-}
+    }
+
+    componentDidMount() {
+        this.getData();                         
+    }
 
 
     getData() {
-        axios.get('https://my-json-server.typicode.com/ntaparia/Final_Project/accounts')
+        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
             .then(response => {
                 this.props.setAccounts(response.data);
             }).catch(error => {
             this.props.tasksError();
         });
 
-        axios.get('https://my-json-server.typicode.com/ntaparia/Final_Project/transactions')
+        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
             .then(response => {
                 this.props.setTransactions(response.data);
             }).catch(error => {

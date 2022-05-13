@@ -17,7 +17,7 @@ const DEFAULT_STATE = [
 
 
 const accountsReducer = (state = DEFAULT_STATE , action) =>{
-    let updateState = [...state];                       
+    let updateState = [...state];     
     let accountId;
     let accBalance;
     let depAmount;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './PageTab.css';
+import './PageTabs.css';
 
 class PageTabs extends React.Component {
     state = { currentPage: '/' }
@@ -18,7 +18,7 @@ class PageTabs extends React.Component {
         return (
             <ul className='nav page-tabs'>
                 <li className='nav-item'>
-                    <Link className={this.isActiveTab('/')} to="/"  
+                    <Link className={this.isActiveTab('/')} to="/"                //to attribute: what page it should go to
                           onClick={event => this.onTabClick(event, '/')}>
                         Accounts
                     </Link>

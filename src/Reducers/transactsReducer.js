@@ -62,7 +62,7 @@ const transactsReducer = (state = DEFAULT_STATE , action) =>{
     else if(action.type === "ADD_ACCOUNT"){
         return [
             ...state,
-            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   
+            { _id: state.length + 1, name: action.payload.name, balance: 0.00 }   //balance: action.payload.balance
         ];
     }
 

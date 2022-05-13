@@ -13,27 +13,21 @@ import AccountsList from './AccountsList';
 import AddAccount from './AddAccount';
 import TransactFormatPage from './TransactFormatPage';
 import TransactList from './TransactList';
-import AccountAdded from './AccountAdded';
 
-class App extends React.Component {            
-                                                
+class App extends React.Component {             
     state = {
         view: {AccountsList},
         allAccounts: [],
         sortedTransactions: {
-            name: [],
-            amounts: []
+        name: [],
+        amounts: []
         },
         sortedAccounts: {
-            name: [],
-            balance: []
+        name: [],
+        balance: []
         },
         errorText: ''
-    }
-
-    componentDidMount() {
-        this.getData();                         
-    }
+}
 
 
     getData() {
@@ -63,7 +57,7 @@ class App extends React.Component {
 
                         <Route path="/" exact component={AccountsList}/>
                         <Route path="/page2" component={TransactList}/>
-                        <Route path="/page3" component={AccountAdded}/>
+                        <Route path="/page3" component={AddAccount}/>
                         <Route path="/page/:id" component={VariablePage}/>
                     </div>
                 </BrowserRouter>

@@ -9,26 +9,8 @@ import { setAccounts, setTransactions, tasksError} from "../actions";
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import AccountsList from './AccountsList';
-import AddAccount from './AddAccount';
-import TransactFormatPage from './TransactFormatPage';
-import TransactList from './TransactList';
 
-class App extends React.Component {             
-                                                
-    state = {
-        view: {AccountsList},
-        allAccounts: [],
-        sortedTransactions: {
-            name: [],
-            amounts: []
-        },
-        sortedAccounts: {
-            name: [],
-            balance: []
-        },
-        errorText: ''
-    }
+class App extends React.Component {
 
     componentDidMount() {
         this.getData();                         
@@ -60,9 +42,9 @@ class App extends React.Component {
                     <PageTabs/>
                     <div>
 
-                        <Route path="/" exact component={AccountsList}/>
-                        <Route path="/page2" component={TransactList}/>
-                        <Route path="/page3" component={AddAccount}/>
+                        <Route path="/" exact component={Page1}/>
+                        <Route path="/page2" component={Page2}/>
+                        <Route path="/page3" component={Page3}/>
                         <Route path="/page/:id" component={VariablePage}/>
                     </div>
                 </BrowserRouter>

@@ -5,8 +5,8 @@ import Transactions from './Transactions';
 class TransactList extends React.Component {
 
     render(){
-        const userTransacts = this.props.transacts.map(transaction  => {
-            return <Transactions transaction={transaction}/>
+        const TransactList = this.props.transactions.map(transactions  => {
+            return <Transactions transactions={transactions}/>
         });
         return(
             <div>
@@ -15,7 +15,7 @@ class TransactList extends React.Component {
 			</div>
 			
 			<div class="container" style={{display:"flex"}}>
-				{transactionList}
+				{TransactList}
 			</div>
 		</div>
         )
@@ -24,7 +24,7 @@ class TransactList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        transacts : state.transacts
+        transactions : state.transactions
     };
 }
 export default connect(mapStateToProps)(TransactList);

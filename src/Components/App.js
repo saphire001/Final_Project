@@ -1,96 +1,53 @@
-//App.js will have react-router
-
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
-
+import { setAccounts, setTransactions } from "../actions";
 import PageTabs from './PageTabs';
-import VariablePage from "./VariablePage";
-import { setAccounts, setTransactions, tasksError} from "../actions";
 import Page1 from './Page1';
 import Page2 from './Page2';
-import Page3 from './Page3';
-import AccountsList from './AccountsList';
-import AddAccount from './AddAccount';
-import TransactFormatPage from './TransactFormatPage';
-import TransactList from './TransactList';
-
-class App extends React.Component {             //if made into a class component, then able to  use getData & axios calls
-                                                //but unable to use react router
-    state = {
-        view: {AccountsList},
-        allAccounts: [],
-        sortedTransactions: {
-            name: [],
-            amounts: []
-        },
-        sortedAccounts: {
-            name: [],
-            balance: []
-        },
-        errorText: ''
-    }
-
-    componentDidMount() {
-        this.getData();                         //if made into a functional component, then able to use react router
-    }
+import VariablePage from "./VariablePage";
 
 
-    getData() {
-        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
-            .then(response => {
-                this.props.setAccounts(response.data);
-            }).catch(error => {
-            this.props.tasksError();
-        });
+class App extends React.Component {
 
-        axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
-            .then(response => {
-                this.props.setTransactions(response.data);
-            }).catch(error => {
-            this.props.tasksError();
-        });
-    }
+  componentDidMount() {
+    this.getData();
+  }
 
-    /****
-     sortAccounts(_id)       //sort by Account name
-     {
-    }
-     *****/
-    //something nicely is cooking and sizzling here
-    /****
-     sortTransactions(accountId)   //sort by id & name
-     {
-         transaction = accountId.filter( transacid => transacid === <VariablePage/>>)
-     }
-     ****/
+  getData() {
+    axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
+      .then(response => {
+        this.props.setAccounts(response.data);
+      });
 
-    render(){
-        const {view} = this.state;
+    axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
+      .then(response => {
+        this.props.setTransactions(response.data);
+      });
 
-        return (
+  }
+
+  render() {
+      return (
+        <div>
+          <BrowserRouter>
+            <PageTabs />
             <div>
-                <BrowserRouter>
-                    <PageTabs/>
-                    <div>
-
-                        <Route path="/" exact component={AccountsList}/>
-                        <Route path="/page2" component={TransactList}/>
-                        <Route path="/page3" component={AddAccount}/>
-                        <Route path="/page/:id" component={VariablePage}/>
-                    </div>
-                </BrowserRouter>
+              <Route path="/" exact component={Page1} />
+              <Route path="/page2" component={Page2} />
+              <Route path="/page/:id" component={VariablePage} />
             </div>
-        )
-    }
+          </BrowserRouter>
+        </div>
+      );
+  }
 }
 
-const mapStateToProps = (state) => {                    //what gets mapped here will be returned to the properties of the component
-    return {
-        errorMessage: state.errors.getAccounts//had get Tasks
-    };
+const mapStateToProps = (state) => {
+  return {
+    state
+  };
 }
 
-
-export default connect(mapStateToProps, {setAccounts, setTransactions, tasksError})(App);
+export default connect(mapStateToProps, { setAccounts, setTransactions })(App);
